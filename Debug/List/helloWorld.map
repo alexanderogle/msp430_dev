@@ -2,7 +2,7 @@
 #                                                                              #
 #      IAR Universal Linker V6.4.6.89                                          #
 #                                                                              #
-#           Link time     =  25/Jan/2017  16:11:32                             #
+#           Link time     =  26/Jan/2017  10:27:07                             #
 #           Target CPU    =  MSP430                                            #
 #           List file     =  "C:\Users\Alexander\Desktop\MSP430 Dev\Debug\List #
 #                            \helloWorld.map"                                  #
@@ -126,7 +126,8 @@ Absolute parts
   ======================
 DATA16_AN
   Relative segment, address: 0021 - 0021 (0x1 bytes), align: 0
-  Segment part 1. ROOT        Intra module refs:   main
+  Segment part 1. ROOT        Intra module refs:   lightShow
+                                                   main
            ENTRY                   ADDRESS         REF BY
            =====                   =======         ======
            _A_P1OUT                0021 
@@ -158,11 +159,27 @@ DATA16_AN
            WDTCTL_bit              0120 
     -------------------------------------------------------------------------
 <CODE> 1 (was CODE)
-  Relative segment, address: C00C - C031 (0x26 bytes), align: 1
-  Segment part 5.
+  Relative segment, address: C080 - C097 (0x18 bytes), align: 1
+  Segment part 7.
            ENTRY                   ADDRESS         REF BY
            =====                   =======         ======
-           main                    C00C            Segment part 18 (?cstart)
+           main                    C080            Segment part 18 (?cstart)
+               calls direct
+    -------------------------------------------------------------------------
+<CODE> 1 (was CODE)
+  Relative segment, address: C00C - C063 (0x58 bytes), align: 1
+  Segment part 6.             Intra module refs:   main
+           ENTRY                   ADDRESS         REF BY
+           =====                   =======         ======
+           lightShow               C00C 
+               calls direct
+    -------------------------------------------------------------------------
+<CODE> 1 (was CODE)
+  Relative segment, address: C064 - C07F (0x1c bytes), align: 1
+  Segment part 5.             Intra module refs:   lightShow
+           ENTRY                   ADDRESS         REF BY
+           =====                   =======         ======
+           waitForIt               C064 
 
     *************************************************************************
 
@@ -172,11 +189,11 @@ DATA16_AN
   SEGMENTS IN THE MODULE
   ======================
 <CODE> 1 (was CODE)
-  Relative segment, address: C04C - C04D (0x2 bytes), align: 1
+  Relative segment, address: C0B2 - C0B3 (0x2 bytes), align: 1
   Segment part 2.
            ENTRY                   ADDRESS         REF BY
            =====                   =======         ======
-           __DebugBreak            C04C            __exit (?__exit)
+           __DebugBreak            C0B2            __exit (?__exit)
 
     -------------------------------------------------------------------------
   LIBRARY MODULE, NAME : ?__exit
@@ -184,11 +201,11 @@ DATA16_AN
   SEGMENTS IN THE MODULE
   ======================
 <CODE> 1 (was CODE)
-  Relative segment, address: C032 - C043 (0x12 bytes), align: 1
+  Relative segment, address: C098 - C0A9 (0x12 bytes), align: 1
   Segment part 2.
            ENTRY                   ADDRESS         REF BY
            =====                   =======         ======
-           __exit                  C032            Segment part 6 (?_exit)
+           __exit                  C098            Segment part 6 (?_exit)
                                                    _exit (?_exit)
                calls direct
 
@@ -198,14 +215,14 @@ DATA16_AN
   SEGMENTS IN THE MODULE
   ======================
 <CODE> 1 (was CODE)
-  Relative segment, address: C044, align: 1
+  Relative segment, address: C0AA, align: 1
   Segment part 0.
            ENTRY                   ADDRESS         REF BY
            =====                   =======         ======
-           _exit                   C044            exit (?exit)
+           _exit                   C0AA            exit (?exit)
     -------------------------------------------------------------------------
 <CODE> 1 (was CODE)
-  Relative segment, address: C044 - C047 (0x4 bytes), align: 1
+  Relative segment, address: C0AA - C0AD (0x4 bytes), align: 1
   Segment part 6.             Intra module refs:   _exit
 
     -------------------------------------------------------------------------
@@ -252,11 +269,11 @@ RESET
   SEGMENTS IN THE MODULE
   ======================
 <CODE> 1 (was CODE)
-  Relative segment, address: C048 - C04B (0x4 bytes), align: 1
+  Relative segment, address: C0AE - C0B1 (0x4 bytes), align: 1
   Segment part 2.
            ENTRY                   ADDRESS         REF BY
            =====                   =======         ======
-           exit                    C048            Segment part 18 (?cstart)
+           exit                    C0AE            Segment part 18 (?cstart)
                calls direct
 
 
@@ -275,7 +292,7 @@ DATA16_AN                              0021 - 0022               2   rel    0
                                        0120 - 0121               2 
 CSTACK                                 03B0 - 03FF              50   rel    1
 CSTART                                 C000 - C00B               C   rel    1
-<CODE> 1                               C00C - C04D              42   rel    1
+<CODE> 1                               C00C - C0B3              A8   rel    1
 RESET                                  FFFE - FFFF               2   rel    1
 
                 ****************************************
@@ -284,8 +301,8 @@ RESET                                  FFFE - FFFF               2   rel    1
                 *                                      *
                 ****************************************
 
- 80 bytes of CODE memory
- 80 bytes of DATA memory (+ 4 absolute )
+ 182 bytes of CODE memory
+  80 bytes of DATA memory (+ 4 absolute )
 
 Errors: none
 Warnings: none
