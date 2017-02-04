@@ -2,7 +2,7 @@
 #                                                                              #
 #      IAR Universal Linker V6.4.6.89                                          #
 #                                                                              #
-#           Link time     =  03/Feb/2017  16:12:35                             #
+#           Link time     =  03/Feb/2017  16:36:03                             #
 #           Target CPU    =  MSP430                                            #
 #           List file     =  C:\Users\Alexander\Desktop\msp430_dev\PWMGenerato #
 #                            r\Debug\List\PWMGenerator.map                     #
@@ -183,7 +183,7 @@ DATA16_AN
            WDTCTL                  0120 
     -------------------------------------------------------------------------
 <CODE> 1 (was CODE)
-  Relative segment, address: C00C - C05B (0x50 bytes), align: 1
+  Relative segment, address: C00C - C06B (0x60 bytes), align: 1
   Segment part 12.
            ENTRY                   ADDRESS         REF BY
            =====                   =======         ======
@@ -191,11 +191,11 @@ DATA16_AN
                calls direct
     -------------------------------------------------------------------------
 <CODE> 1 (was CODE)
-  Relative segment, address: C05C - C0A7 (0x4c bytes), align: 1
+  Relative segment, address: C06C - C0B7 (0x4c bytes), align: 1
   Segment part 11.            Intra module refs:   main
            ENTRY                   ADDRESS         REF BY
            =====                   =======         ======
-           PWMSignal               C05C 
+           PWMSignal               C06C 
 
     *************************************************************************
 
@@ -205,11 +205,11 @@ DATA16_AN
   SEGMENTS IN THE MODULE
   ======================
 <CODE> 1 (was CODE)
-  Relative segment, address: C0C2 - C0C3 (0x2 bytes), align: 1
+  Relative segment, address: C0D2 - C0D3 (0x2 bytes), align: 1
   Segment part 2.
            ENTRY                   ADDRESS         REF BY
            =====                   =======         ======
-           __DebugBreak            C0C2            __exit (?__exit)
+           __DebugBreak            C0D2            __exit (?__exit)
 
     -------------------------------------------------------------------------
   LIBRARY MODULE, NAME : ?__exit
@@ -217,11 +217,11 @@ DATA16_AN
   SEGMENTS IN THE MODULE
   ======================
 <CODE> 1 (was CODE)
-  Relative segment, address: C0A8 - C0B9 (0x12 bytes), align: 1
+  Relative segment, address: C0B8 - C0C9 (0x12 bytes), align: 1
   Segment part 2.
            ENTRY                   ADDRESS         REF BY
            =====                   =======         ======
-           __exit                  C0A8            Segment part 6 (?_exit)
+           __exit                  C0B8            Segment part 6 (?_exit)
                                                    _exit (?_exit)
                calls direct
 
@@ -231,14 +231,14 @@ DATA16_AN
   SEGMENTS IN THE MODULE
   ======================
 <CODE> 1 (was CODE)
-  Relative segment, address: C0BA, align: 1
+  Relative segment, address: C0CA, align: 1
   Segment part 0.
            ENTRY                   ADDRESS         REF BY
            =====                   =======         ======
-           _exit                   C0BA            exit (?exit)
+           _exit                   C0CA            exit (?exit)
     -------------------------------------------------------------------------
 <CODE> 1 (was CODE)
-  Relative segment, address: C0BA - C0BD (0x4 bytes), align: 1
+  Relative segment, address: C0CA - C0CD (0x4 bytes), align: 1
   Segment part 6.             Intra module refs:   _exit
 
     -------------------------------------------------------------------------
@@ -285,11 +285,11 @@ RESET
   SEGMENTS IN THE MODULE
   ======================
 <CODE> 1 (was CODE)
-  Relative segment, address: C0BE - C0C1 (0x4 bytes), align: 1
+  Relative segment, address: C0CE - C0D1 (0x4 bytes), align: 1
   Segment part 2.
            ENTRY                   ADDRESS         REF BY
            =====                   =======         ======
-           exit                    C0BE            Segment part 18 (?cstart)
+           exit                    C0CE            Segment part 18 (?cstart)
                calls direct
 
 
@@ -314,7 +314,7 @@ DATA16_AN                              0022 - 0022               1   rel    0
                                        0172 - 0175               4 
 CSTACK                                 03B0 - 03FF              50   rel    1
 CSTART                                 C000 - C00B               C   rel    1
-<CODE> 1                               C00C - C0C3              B8   rel    1
+<CODE> 1                               C00C - C0D3              C8   rel    1
 RESET                                  FFFE - FFFF               2   rel    1
 
                 ****************************************
@@ -323,7 +323,7 @@ RESET                                  FFFE - FFFF               2   rel    1
                 *                                      *
                 ****************************************
 
- 198 bytes of CODE memory
+ 214 bytes of CODE memory
   80 bytes of DATA memory (+ 14 absolute )
 
 Errors: none

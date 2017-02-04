@@ -34,15 +34,16 @@ void main( void )
     // Code to run forever
     int frequencyLower = 100;
     int frequencyUpper = 1000;
+    int outputPin = BIT6;
     int intensity = 100;
     volatile int i = frequencyLower;
     for(i; i < frequencyUpper; i++){
       // Turn up the frequency of the PWM pulse
-      PWMSignal(i, intensity-1, BIT2, 1);
+      PWMSignal(i, intensity-1, outputPin, 1);
     }
     for(i; i >= frequencyLower; i--){
       // Turn down the frequency of the PWM pulse
-      PWMSignal(i, intensity-1, BIT2, 1);
+      PWMSignal(i, intensity-1, outputPin, 1);
     }
     
   }
@@ -52,7 +53,7 @@ void main( void )
 
 /* PWMSignal generates a PWM signal using one of the MSP430G2553's onboard 
  * timers. This function needs some work. For now (2017-02-03), just make sure
- * you use outputPin = BIT2 and timerNumber = 1, and you'll be alright. 
+ * you use outputPin = BIT2, BIT0, and BIT6 and timerNumber = 1. 
  */
 void PWMSignal( int period, int intensity, char outputPin, int timerNumber ){
   if ( timerNumber == 1 ){
