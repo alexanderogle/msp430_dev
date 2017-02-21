@@ -1,0 +1,31 @@
+;-------------------------------------------------------------------------------
+; butasm1.s43 - press button to light an LED
+; Single loop with decision
+; MSP-EXP430G2 board, LED on P1.0 and P1.6, with onboard pushbutton on P1.3
+; Alexander J. Ogle 2017-02-20; IAR Embedded Workbench IDE version 6.50.1
+;-------------------------------------------------------------------------------
+
+#include "msp430g2553.h"                     ; #define controlled include file
+
+; Pins for LED and button on port 2
+LED1        EQU     BIT6
+B1          EQU     BIT3
+
+            RSEG    CODE                    ; Program goes in code memory
+Reset:
+            mov.w   #WDTPW|WDTHOLD, &WDTCTL ; Stop watchdog timer
+            bis.b   #LED1, &P1OUT           ; Preload LED1 to ON
+            bis.b   #LED1, &P1DIR           ; Set pin with LED1 to output
+InfLoop: 
+            bit.b   #B1, &P1IN              ; Test bit B1 of P1IN
+            jnz     ButtonUp                ; Jump if not zero, button up
+ButtonDown: 
+            bic.b   #LED1, &P1OUT           ; Turn LED1 to ON
+            jmp     InfLoop                 ; Back around to the infinite loop
+ButtonUp: 
+            bis.b   #LED1, &P1OUT           ; Turn LED1 to OFF
+            jmp     InfLoop                 ; Back around to the infinite loop
+;-------------------------------------------------------------------------------
+            RSEG    RESET                   ; Segment for reset vector
+            DW      Reset                   ; Address to start execution
+            END

@@ -2,39 +2,67 @@
 
 <project>
   <fileVersion>2</fileVersion>
-  <fileChecksum>3443880565</fileChecksum>
+  <fileChecksum>1266643648</fileChecksum>
   <configuration>
     <name>Debug</name>
     <outputs>
-      <file>$PROJ_DIR$\Debug\Obj\main.pbi</file>
-      <file>$PROJ_DIR$\Debug\Exe\PWMGenerator.ulp</file>
-      <file>$TOOLKIT_DIR$\inc\intrinsics.h</file>
-      <file>$PROJ_DIR$\Debug\Obj\main.r43</file>
-      <file>$PROJ_DIR$\Debug\Exe\PWMGenerator.d43</file>
       <file>$PROJ_DIR$\main.c</file>
-      <file>$PROJ_DIR$\Debug\Obj\PWMGenerator.pbd</file>
-      <file>$TOOLKIT_DIR$\inc\msp430g2553.h</file>
-      <file>$TOOLKIT_DIR$\inc\in430.h</file>
-      <file>$TOOLKIT_DIR$\lib\dlib\dl430fn.r43</file>
-      <file>$PROJ_DIR$\Debug\Obj\main.__cstat.et</file>
+      <file>$TOOLKIT_DIR$\inc\intrinsics.h</file>
+      <file>$PROJ_DIR$\Debug\Obj\main.pbi</file>
+      <file>$PROJ_DIR$\Debug\Exe\LEDs_and_buttons_C.ulp</file>
+      <file>$PROJ_DIR$\Debug\Obj\main.r43</file>
+      <file>$PROJ_DIR$\Debug\Exe\LEDs_and_buttons_C.d43</file>
+      <file>$PROJ_DIR$\Debug\Obj\LEDs_and_buttons_C.pbd</file>
       <file>$TOOLKIT_DIR$\config\linker\lnk430g2553.xcl</file>
-      <file>$PROJ_DIR$\Debug\List\PWMGenerator.map</file>
+      <file>$PROJ_DIR$\Debug\Obj\main.__cstat.et</file>
+      <file>$TOOLKIT_DIR$\inc\in430.h</file>
+      <file>$TOOLKIT_DIR$\inc\msp430g2553.h</file>
+      <file>$TOOLKIT_DIR$\lib\dlib\dl430fn.r43</file>
+      <file>$PROJ_DIR$\Debug\List\LEDs_and_buttons_C.map</file>
+      <file>$TOOLKIT_DIR$\doc\infocenter\index.ENU.html</file>
     </outputs>
     <file>
       <name>[ROOT_NODE]</name>
       <outputs>
         <tool>
-          <name>XLINK</name>
-          <file> 4 12</file>
+          <name>ULP430</name>
+          <file> 3</file>
         </tool>
         <tool>
-          <name>ULP430</name>
-          <file> 1</file>
+          <name>XLINK</name>
+          <file> 5 12</file>
         </tool>
       </outputs>
     </file>
     <file>
-      <name>$PROJ_DIR$\Debug\Exe\PWMGenerator.d43</name>
+      <name>$PROJ_DIR$\main.c</name>
+      <outputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 2</file>
+        </tool>
+        <tool>
+          <name>ICC430</name>
+          <file> 4</file>
+        </tool>
+        <tool>
+          <name>__cstat</name>
+          <file> 8</file>
+        </tool>
+      </outputs>
+      <inputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 1 9 10</file>
+        </tool>
+        <tool>
+          <name>ICC430</name>
+          <file> 10 9 1</file>
+        </tool>
+      </inputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\Debug\Exe\LEDs_and_buttons_C.d43</name>
       <outputs>
         <tool>
           <name>XLINK</name>
@@ -44,34 +72,7 @@
       <inputs>
         <tool>
           <name>XLINK</name>
-          <file> 11 3 9</file>
-        </tool>
-      </inputs>
-    </file>
-    <file>
-      <name>$PROJ_DIR$\main.c</name>
-      <outputs>
-        <tool>
-          <name>BICOMP</name>
-          <file> 0</file>
-        </tool>
-        <tool>
-          <name>ICC430</name>
-          <file> 3</file>
-        </tool>
-        <tool>
-          <name>__cstat</name>
-          <file> 10</file>
-        </tool>
-      </outputs>
-      <inputs>
-        <tool>
-          <name>BICOMP</name>
-          <file> 2 8 7</file>
-        </tool>
-        <tool>
-          <name>ICC430</name>
-          <file> 7 8 2</file>
+          <file> 7 4 11</file>
         </tool>
       </inputs>
     </file>

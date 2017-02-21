@@ -1,0 +1,19 @@
+;-------------------------------------------------------------------------------
+; ledsasm.s43 - a simple program to light LEDs, absolute assembly 
+; Lights pattern of LEDs, sets pins to output, the loops forever
+; MSP-EXP430G2 development board with LEDs active high on P1.0, P1.6
+; Alexander Ogle, 2017-02-20; IAR Embedded Workbench IDE version 6.50.1
+;-------------------------------------------------------------------------------
+#include "msp430.h"                     ; #define controlled include file
+
+            ORG     0xF000                  ; Start of 4kB flash memory
+Reset:    
+            mov.w   #WDTPW|WDTHOLD, &WDTCTL  ; Stop watchdog timer
+            mov.b   #00000001b, &P1OUT      ; LED1 (P1.0) on, LED2 (P1.6) off
+            mov.b   #00100001b, &P1DIR      ; Set pins with LEDs to output
+InfLoop: 
+            jmp     InfLoop                 ; ...doing nothing. 
+;-------------------------------------------------------------------------------                                     
+            ORG     0xFFFE                  ; Address of MSP430 RESET Vector
+            DW      Reset                   ; Address to start execution
+            END
