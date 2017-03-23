@@ -1,8 +1,8 @@
 "C:\Program Files (x86)\IAR Systems\Embedded Workbench 7.4\430\bin\430proc.dll" 
 
-"C:\Program Files (x86)\IAR Systems\Embedded Workbench 7.4\430\bin\430sim.dll" 
+"C:\Program Files (x86)\IAR Systems\Embedded Workbench 7.4\430\bin\430fet.dll" 
 
-"C:\Users\Alexander\Desktop\msp430_dev\morse_asm\asm.s43" 
+"C:\Users\Alexander\Desktop\msp430_dev\morse_asm\Debug\Exe\morse_asm.d43" 
 
 --plugin "C:\Program Files (x86)\IAR Systems\Embedded Workbench 7.4\430\bin\430bat.dll" 
 
