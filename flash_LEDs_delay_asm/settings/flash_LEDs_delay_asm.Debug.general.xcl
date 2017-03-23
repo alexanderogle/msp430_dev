@@ -1,8 +1,8 @@
 "C:\Program Files (x86)\IAR Systems\Embedded Workbench 7.4\430\bin\430proc.dll" 
 
-"C:\Program Files (x86)\IAR Systems\Embedded Workbench 7.4\430\bin\430sim.dll" 
+"C:\Program Files (x86)\IAR Systems\Embedded Workbench 7.4\430\bin\430fet.dll" 
 
-"C:\Users\Alexander\Desktop\msp430_dev\LEDs_and_buttons_asm\Debug\Exe\LEDs_and_buttons_asm.d43" 
+"C:\Users\Alexander\Desktop\msp430_dev\flash_LEDs_delay_asm\Debug\Exe\flash_LEDs_delay_asm.d43" 
 
 --plugin "C:\Program Files (x86)\IAR Systems\Embedded Workbench 7.4\430\bin\430bat.dll" 
 

@@ -1,0 +1,98 @@
+#include <msp430g2553.h>                     ; #define controlled include file
+
+; Pins for LED on port 1
+LED1             EQU         BIT0
+LED2             EQU         BIT6
+; Iterations of delay loop for about 0.1s (3 cycles/iteration)
+DELAYLOOPS       EQU         27000
+;-------------------------------------------------------------------------------
+    RSEG         CSTACK                     ; Create stack (in RAM)
+;-------------------------------------------------------------------------------
+    RSEG         CODE                       ; Program goes in code memory
+Reset: 
+    mov.w        #SFE(CSTACK),SP            ; Initialize stack pointer
+main: 
+    mov.w        #WDTPW|WDTHOLD,&WDTCTL     ; Stop watchdog timer
+    bis.b        #LED1,&P1OUT               ; Preload LED1 off
+    bis.b        #LED1,&P1DIR               ; Set pin with LED1 to output
+InfLoop: 
+    call         #SOS                       ; Print the word "SOS"
+    jmp          InfLoop                    ; Back around the infinite loop
+    
+;-------------------------------------------------------------------------------
+; Subroutine to give a dash in morse code
+; Parameter is passed in R12 and destroyed
+;-------------------------------------------------------------------------------
+Dash: 
+    bic.b        #LED1,&P1OUT               ; Turn LED off 
+    mov.w        #5,R12                     ; Set delay time, here: 0.5s
+    call         #DelayTenths               ; Call subroutine: don't forget #
+    bis.b        #LED1,&P1OUT                   ; Turn LED1 on
+    mov.w        #10,R12                    ; Set delay time, here: 1.0s
+    call         #DelayTenths               ; Call subroutine: don't forget #
+    bic.b        #LED1,&P1OUT               ; Turn LED off
+    ret                                     ; return to caller when finished
+;-------------------------------------------------------------------------------
+; Subroutine to give a dot in morse code
+; Parameter is passed in R12 and destroyed
+;-------------------------------------------------------------------------------
+Dot: 
+    bic.b        #LED1,&P1OUT               ; Turn LED off 
+    mov.w        #5,R12                     ; Set delay time, here: 0.5s
+    call         #DelayTenths               ; Call subroutine: don't forget #
+    bis.b        #LED1,&P1OUT                   ; Turn LED1 on
+    mov.w        #5,R12                     ; Set delay time, here: 0.5s
+    call         #DelayTenths               ; Call subroutine: don't forget #
+    bic.b        #LED1,&P1OUT               ; Turn LED off
+    ret                                     ; return to caller when finished
+;-------------------------------------------------------------------------------
+; Subroutine to give a pause in morse code
+; Parameter is passed in R12 and destroyed
+;-------------------------------------------------------------------------------
+Pause: 
+    bic.b        #LED1,&P1OUT               ; Turn LED off 
+    mov.w        #15,R12                    ; Set delay time, here: 0.5s
+    call         #DelayTenths               ; Call subroutine: don't forget #
+    ret                                     ; return to caller when finished
+;-------------------------------------------------------------------------------
+; Subroutine to "print" the word "SOS" in morse code
+; Calls the subroutines "Dot", "Dash", and "Pause". 
+;-------------------------------------------------------------------------------
+SOS: 
+    call         #Dot                       ; Do a dot
+    call         #Dot                       ; Do a dot
+    call         #Dot                       ; Do a dot
+    call         #Dash                      ; Do a dash
+    call         #Dash                      ; Do a dash
+    call         #Dash                      ; Do a dash
+    call         #Dot                       ; Do a dot
+    call         #Dot                       ; Do a dot
+    call         #Dot                       ; Do a dot
+    call         #Pause                     ; Pause between words
+    ret                                     ; return to the caller
+;-------------------------------------------------------------------------------
+; Subroutine to give delay of R12*0.1s
+; Parameter is passed in R12 and destroyed
+; R4 is used for loop counter but is not saved and restored
+; Works correctly if R12 = 0: the test is executed first as in while(){}
+;-------------------------------------------------------------------------------
+DelayTenths: 
+    jmp          LoopTest                   ; Start with test in case R12 = 0
+Outerloop:                                  ; [clock cycles in brackets]
+    mov.w        #DELAYLOOPS, R4            ; Initialize loop counter
+DelayLoop:                                  ; [clock cycles in brackets]
+    dec.w        R4                         ; Decrement loop counter [1]
+    jnz          DelayLoop                  ; Repeat loop if not zero [2]
+    dec.w        R12                        ; Decrement number of 0.1s delays
+LoopTest: 
+    cmp.w        #0,R12                     ; Finished number of 0.1s delays? 
+    jnz          Outerloop                  ; No: go around delay loop again
+    ret                                     ; Yes: return to caller
+;-------------------------------------------------------------------------------
+    RSEG         RESET                      ; Segment for reset vector
+    DW           Reset                      ; Address to start execution
+    END
+    
+    
+    
+    
